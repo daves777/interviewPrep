@@ -19,8 +19,6 @@
 # Space Complexity: O(N)
 # We are storing a maximum of K + 1 characters in the hashmap
 
-import math
-
 def longest_substring_with_k_distinct(str1, k):
     window_start, max_length = 0, 0
     char_freq = {}
