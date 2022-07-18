@@ -6,9 +6,9 @@
 
 # Steps:
 # 1. Add elements from array until window sum becomes greater than or equal to S. Remember length of window as smallest window so far
-# 4. Shrink window by subtracting first element until window’s sum is smaller than S again.
-# 5. Check if current window length is smallest so far
-# 2. Keep adding one element to sliding window in stepwise fashion
+# 2. Shrink window by subtracting first element until window’s sum is smaller than S again.
+# 3. Check if current window length is smallest so far
+# 4. Keep adding one element to sliding window in stepwise fashion
 
 # Time Complexity: O(N)
 # The outer for loop runs for all elements, and the inner while loop processes each element only once.
