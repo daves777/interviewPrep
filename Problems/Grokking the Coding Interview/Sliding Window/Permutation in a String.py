@@ -1,5 +1,5 @@
 # Problem:
-# Given an array of positive numbers and a positive number ‘k,’ find the maximum sum of any contiguous subarray of size ‘k’.
+# Given an array of positive numbers and a positive number k, find the maximum sum of any contiguous subarray of size k
 
 # We can use a HashMap to remember the frequencies of all characters in the given pattern.
 # Our goal will be to match all the characters from this HashMap with a sliding window in the given string.
@@ -7,7 +7,7 @@
 # Steps:
 # 1. Create HashMap to calculate frequencies of all characters in pattern
 # 2. Iterate through string, adding one character at a time to sliding window
-# 3. If character being added matches a character in HashMap, decrement its frequency in hashmap. If character frequency becomes zero, we got a match for that character
+# 3. If added character matches a character in hashmap, decrement its frequency in hashmap. If character frequency becomes zero, we got a match for that character
 # 4. If number of characters matched is equal to number of distinct characters in pattern we have gotten our required permutation
 # 5. If window size is greater than length of pattern, shrink window to match pattern’s size. If outgoing character is part of pattern, insert back in the frequency HashMap.
 
@@ -37,7 +37,7 @@ def find_permutation(str1, pattern):
             if char_freq[right_char] == 0:
                 matches += 1
         
-        # If number of matches is the same as number of distinct characters in Hashmap, permutation exists
+        # If number of matches is the same as number of distinct characters in hashmap, permutation exists
         if matches == len(char_freq):
             return True
         
