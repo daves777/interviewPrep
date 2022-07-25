@@ -28,7 +28,6 @@ def find_permutation(str1, pattern):
         char_freq[char] += 1
     
     # Goal is to match all the characters from the 'char_freq' with the current window
-    # window try to extend the range [window_start, window_end]
     for window_end in range(len(str1)):
         right_char = str1[window_end]
         if right_char in char_freq:
