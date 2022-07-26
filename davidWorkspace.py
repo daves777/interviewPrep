@@ -1,40 +1,28 @@
-def find_substring(str1, pattern):
-    window_start, matches, substring_start = 0, 0, 0
-    min_length = len(str1) + 1
-    char_freq = {}
+# Problem:
+# Given an array of positive numbers and a positive number S find the length of the smallest contiguous subarray
+# whose sum is greater than or equal to S. Return 0 if no such subarray exists.
 
-    for char in pattern:
-        if char not in char_freq:
-            char_freq[char] = 0
-        char_freq[char] += 1
-    
-    for window_end in range(len(str1)):
-        right_char = str1[window_end]
-        if right_char in char_freq:
-            char_freq[right_char] -= 1
-            if char_freq[right_char] >= 0:
-                matches += 1
-        
-        while matches == len(pattern):
-            if min_length > window_end - window_start + 1:
-                min_length = window_end - window_start + 1
-                substring_start = window_start
-            
-            left_char = str1[window_start]
+import math
+
+def smallest_subarray_sum(s, arr):
+    window_start, window_sum = 0, 0
+    min_length = math.inf
+
+    for window_end in range(len(arr)):
+        window_sum += arr[window_end]
+        while window_sum >= s:
+            min_length = min(min_length, window_end - window_start + 1)
+            window_sum -= arr[window_start]
             window_start += 1
-            if left_char in char_freq:
-                if char_freq[left_char] == 0:
-                    matches -= 1
-                char_freq[left_char] += 1
-    
-    if min_length > len(str1):
-        return ""
-    return str1[substring_start:substring_start + min_length]
 
+    if min_length == math.inf:
+        return 0
+        
+    return min_length
+    
 def main():
-    print(find_substring("aabdec", "abc"))
-    print(find_substring("aabdec", "abac"))
-    print(find_substring("abdbca", "abc"))
-    print(find_substring("adcad", "abc"))
+    print("Smallest subarray length: " + str(smallest_subarray_sum(7, [2, 1, 5, 2, 3, 2])))
+    print("Smallest subarray length: " + str(smallest_subarray_sum(7, [2, 1, 5, 2, 8])))
+    print("Smallest subarray length: " + str(smallest_subarray_sum(8, [3, 4, 1, 1, 6])))
 
 main()
