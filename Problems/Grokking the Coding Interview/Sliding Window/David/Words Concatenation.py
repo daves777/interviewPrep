@@ -39,7 +39,7 @@ def find_word_concatenation(str1, words):
         word_freq[word] += 1
     
     # iterate through string by length of substring
-    for i in range((len(str1) - words_count * word_length) + 1):
+    for i in range(0, (len(str1) - words_count * word_length) + 1, word_length):
         # keep track of words seen
         words_seen = {}
         # iterate through words within substring based on number of words in substring

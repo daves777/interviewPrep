@@ -22,29 +22,33 @@
 def countClosedIslandsDFS(matrix):
     rows = len(matrix)
     cols = len(matrix[0])
-    visited = [[False for r in range(rows)] for c in range(cols)]
+    visited = [[False for i in range(cols)] for j in range(rows)]
     closedIslands = 0
 
     for r in range(rows):
         for c in range(cols):
-            if matrix[r][c] == 1 and not visited[r][c]:
+            # only if the cell is a land and not visited
+            if matrix[r][c] == 1 and visited[r][c] == False:
                 if dfs(matrix, visited, r, c):
                     closedIslands += 1
+    
     return closedIslands
 
 def dfs(matrix, visited, r, c):
-    if r < 0 or r > len(matrix) or c < 0 or c > len(matrix[0]):
-        return False
+    if r < 0 or r > len(matrix) or c < 0 or c > len(matrix):
+        return False # return false since island is touching an edge
     if matrix[r][c] == 0 or visited[r][c]:
-        return True
-    visited[r][c] = True
-    isClosed = True
-    isClosed &= dfs(matrix, visited, r + 1, c)
-    isClosed &= dfs(matrix, visited, r - 1, c)
-    isClosed &= dfs(matrix, visited, r, c + 1)
-    isClosed &= dfs(matrix, visited, r, c - 1)
+        return True # return true since island is surrounded by water
+
+    visited[r][c] = True # mark cell as visited 
+
+    isClosed = True # if this is set to false by any neighboring cells then set to false
+    # recursively visit all neighboring cells
+    isClosed &= dfs(matrix, visited, r + 1, c) # lower cell
+    isClosed &= dfs(matrix, visited, r - 1, c) # upper cell
+    isClosed &= dfs(matrix, visited, r, c + 1) # right cell
+    isClosed &= dfs(matrix, visited, r, c - 1) # left cell
     return isClosed
-    
 
 def main():
     print(countClosedIslandsDFS([[1, 1, 0, 0, 0], [0, 1, 0, 0, 0], [
