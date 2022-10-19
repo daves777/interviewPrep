@@ -49,7 +49,10 @@ def dfs(matrix, r, c):
     return area
 
 def main():
-    print(maxAreaIslandDFS([[1, 1, 1, 0, 0], [0, 1, 0, 0, 1], [
-          0, 0, 1, 1, 0], [0, 1, 1, 0, 0], [0, 0, 1, 0, 0]]))
+    print(maxAreaIslandDFS([[1, 1, 1, 0, 0],
+                            [0, 1, 0, 0, 1],
+                            [0, 0, 1, 1, 0],
+                            [0, 1, 1, 0, 0],
+                            [0, 0, 1, 0, 0]]))
 
 main()

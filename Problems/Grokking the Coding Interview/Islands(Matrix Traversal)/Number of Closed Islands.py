@@ -51,11 +51,16 @@ def dfs(matrix, visited, r, c):
     return isClosed
 
 def main():
-    print(countClosedIslandsDFS([[1, 1, 0, 0, 0], [0, 1, 0, 0, 0], [
-          0, 0, 1, 1, 0], [0, 1, 1, 0, 0], [0, 0, 0, 0, 0]]))
+    print(countClosedIslandsDFS([[1, 1, 0, 0, 0],
+                                 [0, 1, 0, 0, 0],
+                                 [0, 0, 1, 1, 0],
+                                 [0, 1, 1, 0, 0],
+                                 [0, 0, 0, 0, 0]]))
 
-    print(countClosedIslandsDFS([[0, 0, 0, 0], [0, 1, 0, 0], [
-          0, 1, 0, 0], [0, 0, 1, 0], [0, 0, 0, 0]]))
-
+    print(countClosedIslandsDFS([[0, 0, 0, 0],
+                                 [0, 1, 0, 0],
+                                 [0, 1, 0, 0],
+                                 [0, 0, 1, 0],
+                                 [0, 0, 0, 0]]))
 
 main()
