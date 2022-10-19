@@ -2,6 +2,7 @@
 # Given a string with lowercase letters, if you are can replace no more than k letters with any letter
 # find the length of the longest substring having the same letters after replacement.
 
+# Solution:
 # We can use a hashmap to remember the frequency of each letter
 
 # Steps:

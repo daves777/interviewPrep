@@ -1,6 +1,7 @@
 # Problem:
 # Given an array of positive numbers and a positive number k, find the maximum sum of any contiguous subarray of size k
 
+# Solution:
 # We can use a HashMap to remember the frequencies of all characters in the given pattern.
 # Our goal will be to match all the characters from this HashMap with a sliding window in the given string.
 

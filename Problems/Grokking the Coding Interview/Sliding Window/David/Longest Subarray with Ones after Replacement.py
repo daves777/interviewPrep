@@ -2,6 +2,7 @@
 # Given an array containing 0s and 1s, if you can replace no more than k 0s with 1s, find the length of the longest
 # contiguous subarray having all 1s
 
+# Solution:
 # We can iterate through the array keeping track of the maximum number of 1s in the window. If we have more than
 # k remaining 0s, we will shrink the window as we cannot replace more than k 0s
 

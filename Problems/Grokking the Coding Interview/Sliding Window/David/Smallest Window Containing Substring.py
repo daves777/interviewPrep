@@ -2,6 +2,7 @@
 # Given a string and a pattern, find the smallest substring in the given string which has all the character
 # occurrences of the given pattern.
 
+# Solution:
 # Steps:
 # 1. Create HashMap to calculate frequencies of all characters in pattern
 # 2. Iterate through string, adding one character at a time to sliding window

@@ -5,6 +5,7 @@
 # An island is a connected set of 1s (land) and is surrounded by either an edge or 0s (water)
 # Each cell is considered connected to other cells horizontally or vertically (not diagonally).
 
+# Solution:
 # This question is similar to Number of Islands
 # Whenever we find a cell with the value '1', we have found an island
 # Using that cell as the root node, we will perform a Depth First Search (DFS) to find all of its connected

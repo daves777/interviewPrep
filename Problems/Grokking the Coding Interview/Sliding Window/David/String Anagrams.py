@@ -13,6 +13,7 @@
 
 # Write a function to return a list of starting indices of the anagrams of the pattern in the given string.
 
+# Solution:
 # This is very similar to Permutation in a String. We need to find every occurence of any permutation of the pattern
 # in the string. We can use a list to store the starting indices of the anagrams of the pattern in the string
 

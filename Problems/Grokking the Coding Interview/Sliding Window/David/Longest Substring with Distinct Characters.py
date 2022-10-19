@@ -1,6 +1,7 @@
 # Problem:
 # Given a string, find the length of the longest substring, which has all distinct characters.
 
+# Solution:
 # We can use a hashmap to remember the last index of each character processed.
 # When we get duplicate characters, we shrink the sliding window to ensure we always have distinct characters
 

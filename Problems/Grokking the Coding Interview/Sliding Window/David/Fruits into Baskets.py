@@ -9,6 +9,7 @@
 
 # Write a function to return the maximum number of fruits in both baskets.
 
+# Solution:
 # This is similar to Longest Substring with K Distinct Characters, where K = 2
 
 # Steps:

@@ -5,6 +5,7 @@
 
 # The given matrix has only one island, write a function to find the perimeter of that island.
 
+# Solution:
 # This question is similar to number of islands. We will traverse the matrix linearly to find islands. We
 # can use DFS to traverse the islands and find all connecting land cells.
 

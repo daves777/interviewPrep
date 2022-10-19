@@ -8,6 +8,7 @@
 
 # Write a function to find if the matrix has a cycle.
 
+# Solution:
 # This question is similar to number of islands. We will traverse the matrix linearly to find islands. We
 # can use DFS to traverse the islands and find all connecting land cells.
 

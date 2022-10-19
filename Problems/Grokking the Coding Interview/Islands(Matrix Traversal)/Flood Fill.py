@@ -4,6 +4,7 @@
 # the algorithm fills cells with the new color until it encounters a cell with a different color than the
 # starting cell. Given a matrix, a starting cell, and a color, flood fill the matrix.
 
+# Solution:
 # This question is similar to Number of Islands
 # From the starting cell, we can perform a Depth First Search (DFS) to find all connected cells with the same
 # color. During the DFS traversal, we'll update the cells with the new color
