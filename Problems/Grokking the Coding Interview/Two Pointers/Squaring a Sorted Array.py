@@ -8,16 +8,16 @@
 
 def make_squares(arr):
   result = []
-  left, right = 0, len(arr) - 1
+  left, right = 0, len(arr) - 1 # set left and right pointers
   while left <= right:
-    if arr[left] * arr[left] > arr[right] * arr[right]:
-      result.append(arr[left] * arr[left])
-      left += 1
-    else:
-      result.append(arr[right] * arr[right])
-      right -= 1
+    if arr[left] * arr[left] > arr[right] * arr[right]: # if left square is greater than right square
+      result.append(arr[left] * arr[left]) # add left square
+      left += 1 # shift left pointer
+    else: # if left square is greater than right square
+      result.append(arr[right] * arr[right]) # add right square
+      right -= 1 # shift right pointer
   
-  return result[::-1]
+  return result[::-1] # return reversed array
 
 def main():
 
