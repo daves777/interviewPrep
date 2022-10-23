@@ -1,28 +1,39 @@
 # Problem:
-# Given an array of sorted numbers, remove all duplicate number instances from it in-place, such that each
-# element appears only once. The relative order of the elements should be kept the same and you should not use
-# any extra space so that that the solution have a space complexity of O(1).
+# Given an array of unsorted numbers and a target number, find a triplet in the array whose sum is as close to
+# target number as possible, return the sum of the triplet. If there are more than one such triplet, return the
+# sum of the triplet with the smallest sum
 
-# Move all the unique elements at the beginning of the array and after moving return the length of the subarray
-# that has no duplicates in it.
+import math
 
-def make_squares(arr):
-  result = []
-  left, right = 0, len(arr) - 1
-  while left <= right:
-    if arr[left] * arr[left] > arr[right] * arr[right]:
-      result.append(arr[left] * arr[left])
-      left += 1
-    else:
-      result.append(arr[right] * arr[right])
-      right -= 1
+def triplet_sum_close_to_target(arr, target_sum):
+  arr.sort()
+  smallest_diff = math.inf
+
+  for i in range(len(arr)):
+    if i > 0 and arr[i] == arr[i - 1]:
+      continue
+
+    left, right = i + 1, len(arr) - 1
+    while left < right:
+      current_diff = target_sum - arr[i] - arr[left] - arr[right]
+      if current_diff == 0:
+        return target_sum
+      elif abs(current_diff) < abs(smallest_diff) or abs(current_diff) == abs(smallest_diff) and current_diff > 0:
+        smallest_diff = current_diff
+      if current_diff > 0:
+        left += 1
+      else:
+        right -= 1
   
-  return result[::-1]
+  return target_sum - smallest_diff
+
 
 def main():
-
-  print("Squares: " + str(make_squares([-2, -1, 0, 2, 3])))
-  print("Squares: " + str(make_squares([-3, -1, 0, 1, 2])))
+  print(triplet_sum_close_to_target([-2, 0, 1, 2], 2))
+  print(triplet_sum_close_to_target([-3, -1, 1, 2], 1))
+  print(triplet_sum_close_to_target([1, 0, 1, 1], 100))
+  print(triplet_sum_close_to_target([0, 0, 1, 1, 2, 6], 5))
+  print(triplet_sum_close_to_target([1, 1, 1, 0], 100))
 
 
 main()

@@ -6,6 +6,17 @@
 # Move all the unique elements at the beginning of the array and after moving return the length of the subarray
 # that has no duplicates in it.
 
+# Solution:
+# Set left and right pointers at both ends of the array, comparing the square to see which is larger. Append the
+# larger of the two and shift the pointer, continuing until the entire array has been appended. Since we appended
+# starting with the largest number, we will return the reversed array
+
+# Time Complexity: O(N)
+# This will only take O(N) because we are iterating the input array only once
+
+# Space Complexity: O(N)
+# The space complexity will be O(N), which will be used for the output array
+
 def make_squares(arr):
   result = []
   left, right = 0, len(arr) - 1 # set left and right pointers
