@@ -1,66 +1,41 @@
 # Problem:
-# Given an array with positive numbers and a positive target number, find all continguous subarrays whose
-# product is less than the target number
+# Given two strings containing backspaces (identified by the character ‘#’), check if the two strings are equal
 
-# Solution:
-# This problem follows the sliding window and two pointers pattern and shares similarities with triplets with
-# smaller sum. As we iterate through the array, we will use a sliding window to see the current subarray product.
-# If the subarray product is greater than the target, we will shift the left pointer forwards and divide by the
-# left value to reduce the product. Once a valid subarray is found with product less than target, we will add
-# all combinations of subarrays from right to left.
+def backspace_compare(str1, str2):
+  pointer1 = len(str1) - 1
+  pointer2 = len(str2) - 1
+  while pointer1 >= 0 or pointer2 >= 0:
+    index1 = get_next_valid_index(str1, pointer1)
+    index2 = get_next_valid_index(str2, pointer2)
+    if index1 < 0 and index2 < 0:
+      return True
+    elif index1 < 0 or index1 < 0:
+      return False
+    elif str1[index1] != str2[index2]:
+      return False
 
-# Time Complexity: O(N^3)
-# The main for loop takes O(N), but creating subarrays can take up to O(N^2). Therefore, the overall algorithm
-# will take O(N^2*N) which is O(N^3)
-
-# Space Complexity:
-
-from collections import deque
-
-def find_subarrays(arr, target):
-  product = 1
-  left = 0
-  result = []
-
-  for right in range(len(arr)):
-    # calculate product so far to add to subarray
-    product *= arr[right]
-    # while the product is greater than target, shift left pointer forwards until product is smaller
-    while product >= target and left <= right:
-      product /= arr[left]
-      left += 1
-    # use deque instead of list so we can append left and do so in O(1) time. This is not necessary, but makes
-    # resulting subarrays more intuitive to read
-    subarray = deque()
-    for i in range(right, left - 1, -1): # iterate through subarray from right to left, adding all combinations
-      subarray.appendleft(arr[i])
-      result.append(list(subarray))
+    pointer1 = index1 - 1
+    pointer2 = index2 - 1
   
-  return result
+  return True
 
-# This is the same problem but if it asks for number of subarrays rather than returning the actual subarrays
-def find_subarrays_num(arr, target):
-  product = 1
-  left = 0
-  result = 0
-
-  for right in range(len(arr)):
-    # calculate product so far to add to subarray
-    product *= arr[right]
-    # while the product is greater than target, shift left pointer forwards until product is smaller
-    while product >= target and left <= right:
-      product /= arr[left]
-      left += 1
-    result += right - left + 1  # return number of subarrays. if right and left pointers are the same, the current
-                                # index counts as subarray so we need to add 1
-  
-  return result
+def get_next_valid_index(string, index):
+  backspace_count = 0
+  while index >= 0:
+    if string[index] == '#':
+      backspace_count += 1
+    elif backspace_count > 0:
+      backspace_count -= 1
+    else:
+      break
+    index -= 1
+  return index
 
 def main():
-  print(find_subarrays([2, 5, 3, 10], 30))
-  print(find_subarrays([8, 2, 6, 5], 50))
-  print(find_subarrays_num([2, 5, 3, 10], 30))
-  print(find_subarrays_num([8, 2, 6, 5], 50))
+  print(backspace_compare("xy#z", "xzz#"))
+  print(backspace_compare("xy#z", "xyz#"))
+  print(backspace_compare("xp#", "xyz##"))
+  print(backspace_compare("xywrrmp", "xywrrmu#p"))
 
 
 main()
