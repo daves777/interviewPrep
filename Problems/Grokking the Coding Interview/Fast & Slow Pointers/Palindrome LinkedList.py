@@ -30,28 +30,32 @@ class Node:
 def is_palindromic_linked_list(head):
   if head is None or head.next is None:
     return True
-  
+
+  # find middle of LinkedList
   slow, fast = head, head
   while fast is not None and fast.next is not None:
     slow = slow.next
     fast = fast.next.next
   
-  middle_pointer = reverse(slow)
-  middle_pointer_copy = middle_pointer
+  head_second_half = reverse(slow) # reverse the second half
+  copy_head_second_half = head_second_half # store the head of the reversed part to revert back later
 
-  while head is not None and middle_pointer is not None:
-    if head.value != middle_pointer.value:
-      break
+  # compare the first and secondn half
+  while head is not None and head_second_half is not None:
+    if head.value != head_second_half.value:
+      break # If the values don't match, it is not a palindrome
+
     head = head.next
-    middle_pointer = middle_pointer.next
-  
-  reverse(middle_pointer_copy)
+    head_second_half = head_second_half.next
 
-  if head is None or middle_pointer is None:
+  reverse(copy_head_second_half) # revert second half back to original order
+
+  if head is None or head_second_half is None: # if it reached the end of the LinkedList without breaking the while loop, then the two halves match
     return True
   
   return False
 
+# function to reverse the LinkedList
 def reverse(head):
   prev = None
   while head is not None:

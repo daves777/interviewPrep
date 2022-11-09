@@ -1,8 +1,5 @@
 # Problem:
-# Given an array containing 0s, 1s and 2s, sort the array in-place. You should treat numbers of the array
-# as objects, hence, we can’t count 0s, 1s, and 2s to recreate the array. The flag of the Netherlands consists
-# of three colors: red, white and blue. Since our input array also consists of three different numbers, that
-# is why it is called Dutch National Flag problem
+# Given the head of a Singly LinkedList, write a function to determine if the LinkedList has a cycle in it or not.
 
 # Solution:
 # We can use a two pointers approach while iterating through the array. Set a low and high pointer pointing to
@@ -16,7 +13,7 @@
 # We do not create any new arrays or use up any additional space since this is an in place sort, so the algorithm runs in constant space O(1)
 
 def dutch_flag_sort(arr):
-  # all elements < low are 0, all elemetns > high are 2
+  # all elements < low are 0, all elements > high are 2
   # all elements >= low < i are 1
   low, high = 0, len(arr) - 1
   i = 0
