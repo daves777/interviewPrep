@@ -27,17 +27,22 @@
 
 def circular_array_loop_exists(arr):
   for i in range(len(arr)):
-    is_forward = arr[i] >= 0
+    is_forward = arr[i] >= 0 # if we are moving forward or not
     slow, fast = i, i
 
+    # if slow or fast becomes -1, this means we cannot find the cycle for this number
     while True:
+      # move one step for slow pointer
       slow = find_next_index(arr, is_forward, slow)
+      # move one step for fast pointer
       fast = find_next_index(arr, is_forward, fast)
       if fast != -1:
+        # if fast pointer is valid, move another step
         fast = find_next_index(arr, is_forward, fast)
       if slow == -1 or fast == -1 or slow == fast:
         break
     
+    # if slow and fast are valid and the same, we have found a cycle
     if slow != -1 and slow == fast:
       return True
     
@@ -46,12 +51,12 @@ def circular_array_loop_exists(arr):
 def find_next_index(arr, is_forward, current_index):
   direction = arr[current_index] >= 0
 
-  if direction != is_forward:
+  if is_forward != direction: # change in direction, return -1
     return -1
   
   next_index = (current_index + arr[current_index]) % len(arr)
 
-  if current_index == next_index:
+  if next_index == current_index: # one element cycle, return -1
     return -1
   
   return next_index
