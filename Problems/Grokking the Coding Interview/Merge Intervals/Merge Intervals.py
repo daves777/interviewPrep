@@ -46,7 +46,7 @@ def merge(intervals):
 
   for i in range(1, len(intervals)): # compare interval with one in front of it
     interval = intervals[i]
-    if interval.start <= end: # if next interval start before previous end, we have overlapping interval
+    if interval.start <= end: # if next interval starts before previous end, we have overlapping interval
       end = max(interval.end, end) # adjust end of previous interval
     else:
       result.append(Interval(start, end)) # otherwise we have non-overlapping interval, add previous interval and move on to next

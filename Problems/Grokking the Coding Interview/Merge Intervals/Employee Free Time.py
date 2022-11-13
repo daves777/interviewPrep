@@ -33,26 +33,33 @@ class Interval:
 
 def find_employee_free_time(schedule):
   intervals = []
+
+  # flatten given intervals into one big list
   for i in schedule:
-    [intervals.append(j) for j in i]
+    for j in i:
+      intervals.append(j)
   
+  # sort all the intervals by their starting time
   intervals.sort(key = lambda x : x.start)
 
+  # merge all overlapping intervals
   merged = []
   start = intervals[0].start
   end = intervals[0].end
 
-  for i in range(1, len(intervals)):
-    current = intervals[i]
-    if current.start <= end:
-      end = max(current.end, end)
+  for i in range(1, len(intervals)): # compare interval with one in front of it
+    interval = intervals[i]
+    if interval.start <= end: # if next interval starts before previous ends, we have overlapping interval
+      end = max(interval.end, end) # adjust end of previous interval
     else:
-      merged.append(Interval(start, end))
-      start = current.start
-      end = current.end
-  
+      merged.append(Interval(start, end)) # otherwise we have non-overlapping interval, add previous interval and move on to next
+      start = interval.start
+      end = interval.end
+      
+  # remember to add last interval
   merged.append(Interval(start, end))
 
+  # create free intervals using time between merged intervals. We can use end and start times of intervals to find this
   free = []
   for i in range(1, len(merged)):
     free.append(Interval(merged[i - 1].end, merged[i].start))
