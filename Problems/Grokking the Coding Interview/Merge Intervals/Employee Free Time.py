@@ -24,12 +24,12 @@
 # space complexity of O(N + N) which is equivalent to O(N)
 
 class Interval:
-    def __init__(self, start, end):
-        self.start = start
-        self.end = end
+  def __init__(self, start, end):
+      self.start = start
+      self.end = end
 
-    def print_interval(self):
-        print("[" + str(self.start) + ", " + str(self.end) + "]", end='')
+  def print_interval(self):
+      print("[" + str(self.start) + ", " + str(self.end) + "]", end='')
 
 def find_employee_free_time(schedule):
   intervals = []
