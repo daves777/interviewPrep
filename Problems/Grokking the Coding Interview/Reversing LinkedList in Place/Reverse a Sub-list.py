@@ -35,16 +35,16 @@ def reverse_sub_list(head, p, q):
   
   current, previous = head, None
   i = 0
-  while current is not None and i < p - 1:
+  while current is not None and i < p - 1: # iterate until current points to pth node
     previous = current
     current = current.next
     i += 1
   
-  first_half_last_node = previous
-  sub_list_last_node = current
+  first_half_last_node = previous # save the last node of the first half
+  sub_list_last_node = current # after reversing the sublist, current will become the last node in the sublist
 
   i = 0
-  while current is not None and i < q - p + 1:
+  while current is not None and i < q - p + 1: # reverse nodes between p and q
     next = current.next
     current.next = previous
     previous = current
@@ -52,13 +52,13 @@ def reverse_sub_list(head, p, q):
     i += 1
   
   if first_half_last_node is not None:
-    first_half_last_node.next = previous
-  else:
-    head = previous
+    first_half_last_node.next = previous # connect to first half, previous is now the first node of the sublist
+  else: # if first_half_last_node is None, it is because p == 1, so previous was never set.
+    head = previous # change the head to previous
   
+  # connect with last part
   sub_list_last_node.next = current
   return head
-
 
 
 def main():
