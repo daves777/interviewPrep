@@ -33,23 +33,27 @@ class Node:
 
 
 def rotate(head, rotations):
-  if head is None or head.next is None or rotations < 1:
+  if head is None or head.next is None or rotations == 0:
     return head
   
-  list_length = 1
+  # find the length and the last node of the list
   last_node = head
+  length = 1 # initialize list length to 1
   while last_node.next is not None:
     last_node = last_node.next
-    list_length += 1
+    length += 1
   
-  last_node.next = head
-  rotations %= list_length
-  skip_length = list_length - rotations
-  last_node_rotated_list = head
+  last_node.next = head # connect the last node with the head to make it a circular list
+  rotations %= length # if rotations is larger than the length of the list, find the actual number to shift by
+  skip_length = length - rotations # determine length of nodes to iterate to find head again
+  rotated_list_last_node = head
+  # iterate until rotated_list_last_node points to the node right before the sublist of k ending nodes
   for i in range(skip_length - 1):
-    last_node_rotated_list = last_node_rotated_list.next
-  head = last_node_rotated_list.next
-  last_node_rotated_list.next = None
+    rotated_list_last_node = rotated_list_last_node.next
+
+  # set head and tail of new LinkedList
+  head = rotated_list_last_node.next
+  rotated_list_last_node.next = None
   return head
 
 
