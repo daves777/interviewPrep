@@ -28,19 +28,19 @@ def find_level_averages(root):
     return result
   
   queue = deque()
-  queue.append(root)
-  while queue:
-    levelSize = len(queue)
-    levelSum = 0.0
-    for i in range(levelSize):
-      currentNode = queue.popleft()
-      levelSum += currentNode.val
-      if currentNode.left:
-        queue.append(currentNode.left)
-      if currentNode.right:
-        queue.append(currentNode.right)
-    result.append(levelSum/levelSize)
+  queue.append(root) # add root node to queue
 
+  while queue:
+    levelSize = len(queue) # determine size of level
+    levelSum = 0.0 # create empty array for current level
+    for i in range(levelSize):
+      currentNode = queue.popleft() # set currentNode to first in queue
+      levelSum += currentNode.val # add currentNode value to running sum for current level
+      if currentNode.left:
+        queue.append(currentNode.left) # add left child
+      if currentNode.right:
+        queue.append(currentNode.right) # add right child
+    result.append(levelSum/levelSize) # add current level average innto result array
   return result
 
 def main():

@@ -7,7 +7,7 @@
 # than the maximum or larger than the minimum of the subarray
 
 # Steps:
-# 1. From the beginning and end of the array, find the first elements that are out of the sorting order. This will create the candidate subarray
+# 1. From the beginning and end of the array, find first elements out of order. This will create the candidate subarray
 # 2. Find the max and min of this subarray
 # 3. Extend subarray from beginning to include any number bigger than the minimum of the subarray
 # 4. Extend subarray from end to include any number smaller than the maximum of the subarray
