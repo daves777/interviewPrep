@@ -29,13 +29,13 @@ class TreeNode:
     self.right = right
   
 def has_path(root, sum):
-  if root is None:
+  if root is None: # if root node is null, return false
     return False
   
-  if root.left is None and root.right is None and root.val == sum:
+  if root.left is None and root.right is None and root.val == sum: # if current node is leaf node and value is equal to sum return
     return True
   
-  return has_path(root.left, sum - root.val) or has_path(root.right, sum - root.val)
+  return has_path(root.left, sum - root.val) or has_path(root.right, sum - root.val) # recursively call to traverse left and right child
 
 def main():
 
