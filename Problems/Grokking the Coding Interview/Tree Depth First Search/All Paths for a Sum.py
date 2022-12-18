@@ -5,12 +5,12 @@
 # As we are trying to search for a root-to-leaf path, we can follow the same DFS approach. The difference is that instead of stopping
 # as soon as we find the first path, every time we find a root-to-leaf path we will store it in a list. 
 
-# Time Complexity: O(N^2)
-# The time complexity of this algorithm will be O(N^2) where N is the total number of nodes in the tree. This is because we traverse
-# each node once, and for every leaf node we might have to store its path by making a copy of the current path, which takes O(N)
+# Time Complexity: O(N)
+# The time complexity of this algorithm will be O(N) where N is the total number of nodes in the tree. This is because we traverse
+# each node only once
 
 # Space Complexity: O(N)
-# If we ignore the space needed for the allPaths list, we will need O(N) space for the recursion stack.
+# Thee space required will be O(N) because we will need O(N) space for the recursion stack.
 
 class TreeNode:
   def __init__(self, val, left=None, right=None):
@@ -20,20 +20,25 @@ class TreeNode:
 
 def find_paths(root, required_sum):
   allPaths = []
-  find_paths_recursive(root, required_sum, [], allPaths)
+  find_paths_recursive(root, required_sum, [], allPaths) # invoke recursive function
   return allPaths
 
 def find_paths_recursive(currentNode, required_sum, currentPath, allPaths):
   if currentNode is None:
     return
-  
-  currentPath.append(currentNode.val)
 
-  if currentNode.val == required_sum and currentNode.left is None and currentNode.right is None:
+  currentPath.append(currentNode.val) # add current node to the path
+  
+  # if current node is a leaf node and value is equal to required_sum, add current path to final list
+  if currentNode.left is None and currentNode.right is None and currentNode.val == required_sum:
     allPaths.append(list(currentPath))
   else:
+    # traverse left sub tree
     find_paths_recursive(currentNode.left, required_sum - currentNode.val, currentPath, allPaths)
+    # traverse right sub tree
     find_paths_recursive(currentNode.right, required_sum - currentNode.val, currentPath, allPaths)
+  # remove current node from the path to backtrack
+  # we need to remove the current node while going up the recursive call stack
   del currentPath[-1]
 
 def main():
