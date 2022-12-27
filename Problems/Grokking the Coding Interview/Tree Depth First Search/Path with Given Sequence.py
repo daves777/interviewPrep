@@ -20,18 +20,23 @@ class TreeNode:
 
 
 def find_path(root, sequence):
-  if root is None:
+  if not root:
     return len(sequence) == 0
   return find_path_recursive(root, sequence, 0)
 
 def find_path_recursive(currentNode, sequence, sequenceIndex):
   if currentNode is None:
     return False
-  if currentNode.val != sequence[sequenceIndex] or sequenceIndex > len(sequence):
+
+  # If currentNode doesn't match sequence values or current path is longer than sequence
+  if currentNode.val != sequence[sequenceIndex] or sequenceIndex >= len(sequence):
     return False
+  
+  # If current node is leaf node and it is end of sequence, we have found the path
   if currentNode.left is None and currentNode.right is None and sequenceIndex == len(sequence) - 1:
     return True
   else:
+    # Recursively call to traverse the left and right subtree, return true if either of them return true
     return find_path_recursive(currentNode.left, sequence, sequenceIndex + 1) or find_path_recursive(currentNode.right, sequence, sequenceIndex + 1)
 
 def main():

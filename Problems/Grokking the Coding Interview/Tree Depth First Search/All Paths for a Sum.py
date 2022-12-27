@@ -7,10 +7,16 @@
 
 # Time Complexity: O(N)
 # The time complexity of this algorithm will be O(N) where N is the total number of nodes in the tree. This is because we traverse
-# each node only once
+# each node only once. We also need to store a copy of the path whenever we find a leaf node, which will take O(N) This results in
+# O(N^2) in the worst case. However, from below we can calculate a tighter time complexity of O(N*logN)
 
-# Space Complexity: O(N)
-# Thee space required will be O(N) because we will need O(N) space for the recursion stack.
+# Space Complexity: O(N*logN)
+# We will need O(N) space for the recursion stack. We will also need to consider how much space we need for the allPaths array. We
+# know there can't be more leaf nodes than nodes in the tree, so that maximum number of elements in allPaths is O(N). Next, we need
+# to determine how much space each element will need. For this problem, the worst case scenario is for balanced trees. In a balanced
+# tree, the number of leaf nodes is 2^H where H is the height of the tree. That means number of leaf nodes can determine the height
+# of the tree with logN. This means the total size of allpaths will be O(N*logN). Since there are logN nodes each path, we can get 
+# a tighter time complexity of O(N*logN)
 
 class TreeNode:
   def __init__(self, val, left=None, right=None):
