@@ -3,7 +3,8 @@
 
 # Solution:
 # As we are trying to search for a root-to-leaf path, we can follow the same DFS approach. We will need to track the element of the
-# given sequence that we should match with the current node. We can return false as soon as we find a mismatch between the sequence and the node value.
+# given sequence that we should match with the current node. We can return false as soon as we find a mismatch between the sequence
+# and the node value.
 
 # Time Complexity: O(N)
 # The time complexity of this algorithm will be O(N) where N is the total number of nodes in the tree. This is because we traverse
